@@ -25,12 +25,6 @@ Bộ dữ liệu gốc gồm:
 
 Sau khi xóa 1.081 dòng trùng, lần chạy gần nhất lấy ngẫu nhiên 60.000 dòng, trong đó có 98 fraud.
 
-`creditcard.csv` không được commit. Dataset mặc định trên Kaggle:
-
-```text
-/kaggle/input/datasets/phtrnnam/cs313-namphu/creditcard.csv
-```
-
 ## Pipeline
 
 ```text
@@ -49,39 +43,6 @@ creditcard.csv
 ```
 
 PCA 2D được fit riêng và chỉ dùng để trực quan. Trong lần chạy hiện tại, PCA 8D giữ khoảng 66,47% phương sai; PCA 2D giữ khoảng 25,65%.
-
-## Chạy trên Kaggle
-
-1. Tạo Kaggle Notebook mới.
-2. Chọn **File -> Import Notebook**.
-3. Upload `fraud_benchmark/kaggle_fraud_benchmark.ipynb`.
-4. Add Input chứa `creditcard.csv`.
-5. Kiểm tra `DATA_PATH` trong cell cấu hình.
-6. Chọn **Run All**.
-
-Thông số mặc định:
-
-```python
-SAMPLE_SIZE = 60_000
-PCA_COMPONENTS = 8
-ALERT_RATE = 0.01
-RANDOM_SEED = 42
-DBSCAN_EPS = None
-HDBSCAN_MIN_CLUSTER_SIZE = 50
-LOF_NEIGHBORS = 35
-IFOREST_TREES = 300
-```
-
-Nếu thiếu HDBSCAN, notebook sẽ thử cài package `hdbscan`. Nếu chạy quá lâu hoặc thiếu RAM, giảm `SAMPLE_SIZE` xuống 30.000.
-
-Có thể chạy bản command-line trên Kaggle:
-
-```bash
-python fraud_benchmark/kaggle_fraud_benchmark.py \
-  --data /kaggle/input/datasets/phtrnnam/cs313-namphu/creditcard.csv \
-  --sample-size 60000 \
-  --output /kaggle/working/fraud_density_outputs
-```
 
 ## Kết quả hiện tại
 
@@ -128,24 +89,3 @@ DBSCAN minh họa tốt ý tưởng fraud có thể xuất hiện ở vùng mậ
 `-- .gitignore
 ```
 
-`candidate_rankings.csv` và `creditcard.csv` được loại khỏi Git vì không cần thiết cho việc tiếp tục làm slide.
-
-## Việc nên làm tiếp
-
-1. Dùng DBSCAN làm mô hình chính để giải thích density-based và khái niệm noise.
-2. Dùng LOF làm kết quả tốt nhất trong bảng benchmark hiện tại.
-3. Trình bày so sánh tại cùng alert budget 1%.
-4. Không sử dụng lại các số Precision 0,62, Recall 0,68 và AUPRC 0,44 từ demo cũ.
-5. Cải thiện hình trước khi đưa vào slide:
-   - Thu trục Y của `model_comparison.png` về khoảng 0 đến 0,25 và thêm nhãn số.
-   - Zoom vùng elbow của `k_distance.png` quanh `eps` khoảng 1,97.
-   - Giảm kích thước dấu noise trong `dbscan_projection.png`.
-6. Nêu rõ đây là demo nghiên cứu trên sample ngẫu nhiên, chưa phải hệ thống fraud production hoặc real-time.
-
-## Diễn giải kết quả
-
-- Không kết luận DBSCAN tốt hơn mọi phương pháp.
-- DBSCAN phù hợp để minh họa noise là output cần tìm.
-- LOF cho ranking tốt nhất trong benchmark hiện tại.
-- Isolation Forest chạy nhanh nhất nhưng chất lượng top 1% thấp hơn.
-- HDBSCAN không cải thiện so với DBSCAN với cấu hình hiện tại.
