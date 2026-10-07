@@ -1,0 +1,132 @@
+{
+  "models": [
+    {
+      "model": "DBSCAN",
+      "runtime_seconds": 52.82604987900004,
+      "auprc": 0.022445504484635254,
+      "native": {
+        "alerts": 4200,
+        "alert_rate": 0.07,
+        "precision": 0.015952380952380954,
+        "recall": 0.6836734693877551,
+        "f1": 0.031177291763610983,
+        "tn": 55769,
+        "fp": 4133,
+        "fn": 31,
+        "tp": 67
+      },
+      "fixed_budget": {
+        "alerts": 600,
+        "alert_rate": 0.01,
+        "precision": 0.028333333333333332,
+        "recall": 0.17346938775510204,
+        "f1": 0.04871060171919771,
+        "tn": 59319,
+        "fp": 583,
+        "fn": 81,
+        "tp": 17
+      },
+      "parameters": {
+        "eps": 1.9699236002465152,
+        "eps_source": "automatic elbow on trimmed k-distance curve",
+        "min_samples": 16,
+        "anomaly_score": "distance to the k-th nearest neighbor"
+      }
+    },
+    {
+      "model": "HDBSCAN",
+      "runtime_seconds": 47.038769469000044,
+      "auprc": 0.011972423012220885,
+      "native": {
+        "alerts": 4652,
+        "alert_rate": 0.07753333333333333,
+        "precision": 0.014402407566638005,
+        "recall": 0.6836734693877551,
+        "f1": 0.028210526315789474,
+        "tn": 55317,
+        "fp": 4585,
+        "fn": 31,
+        "tp": 67
+      },
+      "fixed_budget": {
+        "alerts": 600,
+        "alert_rate": 0.01,
+        "precision": 0.018333333333333333,
+        "recall": 0.11224489795918367,
+        "f1": 0.03151862464183381,
+        "tn": 59313,
+        "fp": 589,
+        "fn": 87,
+        "tp": 11
+      },
+      "parameters": {
+        "backend": "sklearn.cluster.HDBSCAN",
+        "min_cluster_size": 50,
+        "min_samples": 16
+      }
+    },
+    {
+      "model": "Isolation Forest",
+      "runtime_seconds": 2.883956284000078,
+      "auprc": 0.018757679794686417,
+      "native": {
+        "alerts": 3694,
+        "alert_rate": 0.061566666666666665,
+        "precision": 0.013264753654574987,
+        "recall": 0.5,
+        "f1": 0.025843881856540084,
+        "tn": 56257,
+        "fp": 3645,
+        "fn": 49,
+        "tp": 49
+      },
+      "fixed_budget": {
+        "alerts": 600,
+        "alert_rate": 0.01,
+        "precision": 0.013333333333333334,
+        "recall": 0.08163265306122448,
+        "f1": 0.022922636103151862,
+        "tn": 59310,
+        "fp": 592,
+        "fn": 90,
+        "tp": 8
+      },
+      "parameters": {
+        "n_estimators": 300,
+        "contamination": "auto",
+        "random_state": 42
+      }
+    },
+    {
+      "model": "LOF",
+      "runtime_seconds": 10.878657691999933,
+      "auprc": 0.02490486568733477,
+      "native": {
+        "alerts": 3546,
+        "alert_rate": 0.0591,
+        "precision": 0.01692047377326565,
+        "recall": 0.6122448979591837,
+        "f1": 0.03293084522502744,
+        "tn": 56416,
+        "fp": 3486,
+        "fn": 38,
+        "tp": 60
+      },
+      "fixed_budget": {
+        "alerts": 600,
+        "alert_rate": 0.01,
+        "precision": 0.03666666666666667,
+        "recall": 0.22448979591836735,
+        "f1": 0.06303724928366762,
+        "tn": 59324,
+        "fp": 578,
+        "fn": 76,
+        "tp": 22
+      },
+      "parameters": {
+        "n_neighbors": 35,
+        "contamination": "auto"
+      }
+    }
+  ]
+}

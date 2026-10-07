@@ -1,0 +1,13 @@
+{
+  "raw_rows": 284807,
+  "raw_columns": 31,
+  "missing_values": 0,
+  "duplicate_rows_removed": 1081,
+  "raw_fraud": 492,
+  "raw_fraud_rate": 0.001727485630620034,
+  "clean_rows": 283726,
+  "sample_rows": 60000,
+  "sample_fraud": 98,
+  "sample_fraud_rate": 0.0016333333333333334,
+  "sample_was_random_without_target_stratification": true
+}

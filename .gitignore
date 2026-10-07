@@ -1,0 +1,14 @@
+creditcard.csv
+__pycache__/
+*.pyc
+
+# Large generated output. Keep summary metrics and figures in Git.
+fraud_benchmark/outputs/candidate_rankings.csv
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
